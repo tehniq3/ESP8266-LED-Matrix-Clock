@@ -1,5 +1,5 @@
 # ESP8266-LED-Matrix-Clock
-inspired from https://github.com/schreibfaul1/ESP8266-LED-Matrix-Clock
+inspired by https://github.com/schreibfaul1/ESP8266-LED-Matrix-Clock
 
 my article; https://nicuflorica.blogspot.com/2019/03/ceas-matriceal-animat-cu-esp8266-si-rtc.html
 
