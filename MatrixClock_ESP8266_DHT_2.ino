@@ -14,10 +14,10 @@
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE
 //
 //
-// small changes by Nicu FLORICA (niq_ro) 
-// add DHT sensor for temperature and humidity, 31-Mar-2019
-// change at add text to be more easy to change, 04-Apr-2019
-// change temperature to be as float, 04-Apr-2019
+// small changes by Nicu FLORICA (niq_ro), 31-May_2019
+// add DHT sensor for temperature and humidity
+// change at add text to be more easy to change 
+// change temperature to be as float
 
 #include <SPI.h>
 #include <Ticker.h>
@@ -33,8 +33,8 @@
 #define CS         15     // Pin cs  (SPI)
 #define anzMAX     6      // Anzahl der kaskadierten Module
 
-char ssid[] = "SSID";                    // your network SSID (name)
-char pass[] = "password";                    // your network password
+char ssid[] = "bbk2";                    // your network SSID (name)
+char pass[] = "internet2";                    // your network password
 
 // other displays -------------------------------------
 #define REVERSE_HORIZONTAL                        // Parola, Generic and IC-Station
@@ -804,20 +804,7 @@ void loop() {
 
 //    temperatura = random(-20,25);
 //    umiditate = random(1,55);
-   if (temperatura < 0)
-   {
-    temp = -10*temperatura;
-    minus = 1;
-   }
-   else
-   {
-    minus = 0;
-    temp = 10*temperatura;
-   }
-tempz = temp/100;
-tempr = temp - 100*tempz;
-tempu = tempr/10;
-temps = tempr%10;
+
 
     z_PosX = maxPosX;
     d_PosX = -8;
@@ -900,12 +887,31 @@ temps = tempr%10;
             std21 = std22;
             std22 = std2;
             f_tckr1s = false;
-            if (MEZ.sek12 == 45)
+            if (MEZ.sek12 == 35)
                 f_scroll_x = true;
              if (MEZ.sek12 == 59)    
              {
               temperatura = dht.readTemperature();
+               Serial.print("t = ");
+               Serial.print(temperatura);
+               Serial.print("gr.C h = ");
               umiditate = dht.readHumidity();
+               Serial.print(umiditate);
+               Serial.println("%rh");
+   if (temperatura < 0)
+   {
+    temp = -10*temperatura;
+    minus = 1;
+   }
+   else
+   {
+    minus = 0;
+    temp = 10*temperatura;
+   }
+tempz = temp/100;
+tempr = temp - 100*tempz;
+tempu = tempr/10;
+temps = tempr%10;
              }
         } // end 1s
         if (f_tckr50ms == true) {
@@ -1029,73 +1035,6 @@ poz = poz+6;
 poz = poz+6;
             char2Arr(' ', d_PosX - poz, 0);
 poz = poz+6;
-/*
-// Seby part
-if (temperatura >= 10)  
-    {
-      char2Arr('+', d_PosX - poz, 0);                    //temperature
-poz = poz+6;
-      char2Arr(48 + (temperatura / 10), d_PosX - poz, 0);
-poz = poz+6;
-      char2Arr(48 + (temperatura % 10), d_PosX - poz, 0);
-poz = poz+6;
-      char2Arr('$', d_PosX - poz, 0);
-poz = poz+6;
-      char2Arr('C', d_PosX - poz, 0);
-    } 
-if (temperatura <= 9 && temperatura >0)     
-    {
-      char2Arr(' ', d_PosX - poz, 0);                    //temperature
-poz = poz+6;
-      char2Arr('+', d_PosX - poz, 0);
-poz = poz+6;
-      char2Arr(48 + (temperatura % 10), d_PosX - poz, 0);
-poz = poz+6;
-      char2Arr('$', d_PosX - poz, 0);
-poz = poz+6;
-      char2Arr('C', d_PosX - poz, 0);
-    }    
-if (temperatura == 0)     
-    {
-      char2Arr(' ', d_PosX - poz, 0);                    //temperature
-poz = poz+6;
-      char2Arr(' ', d_PosX - poz, 0);
-poz = poz+6;
-      char2Arr(48 + (temperatura % 10), d_PosX - poz, 0);
-poz = poz+6;
-      char2Arr('$', d_PosX - poz, 0);
-poz = poz+6;
-      char2Arr('C', d_PosX - poz, 0);
-    } 
-if (temperatura < 0 && temperatura >= -9)
-    {
-      char2Arr(' ', d_PosX - poz, 0);                    //temperature
-poz = poz+6;
-      char2Arr('-', d_PosX - poz, 0);//the ,,abs,, turns the negative number into positive
-poz = poz+6;
-      char2Arr(48 + (abs(temperatura) % 10), d_PosX - poz, 0);
-poz = poz+6;
-      char2Arr('$', d_PosX - poz, 0);
-poz = poz+6;
-      char2Arr('C', d_PosX - poz, 0);
-    }     
-if (temperatura <  -9)
-    {
-      char2Arr('-', d_PosX - poz, 0);                    //temperature
-poz = poz+6;
-      char2Arr(48 + (abs(temperatura) / 10), d_PosX - poz, 0);//the ,,abs,, turns the negative number into positive
-poz = poz+6;
-      char2Arr(48 + (abs(temperatura) % 10), d_PosX - poz, 0);
-poz = poz+6;
-      char2Arr('$', d_PosX - poz, 0);
-poz = poz+6;
-      char2Arr('C', d_PosX - poz, 0);
-    } 
-poz = poz+6;
-            char2Arr(' ', d_PosX - poz, 0);
-poz = poz+6;
-            char2Arr(' ', d_PosX - poz, 0);
-*/
 
 // my part (niq_ro part)
 if (minus == 1)
@@ -1132,26 +1071,16 @@ if (umiditate >= 10)
     {
       char2Arr(48 + (umiditate / 10), d_PosX - poz, 0);
 poz = poz+6;
-      char2Arr(48 + (umiditate % 10), d_PosX - poz, 0);
-poz = poz+6;
-      char2Arr('%', d_PosX - poz, 0);
-poz = poz+6;
-      char2Arr('R', d_PosX - poz, 0);
-poz = poz+6;
-      char2Arr('H', d_PosX - poz, 0);      
-    } 
-if (temperatura <= 9 && temperatura >0)     
-    {     
-      char2Arr(' ', d_PosX - poz, 0);
-poz = poz+6;
-      char2Arr(48 + (umiditate), d_PosX - poz, 0);
+    }
+
+      char2Arr(48 + (umiditate%10), d_PosX - poz, 0);
 poz = poz+6;
       char2Arr('%', d_PosX - poz, 0);
 poz = poz+6;      
       char2Arr('R', d_PosX - poz, 0);
 poz = poz+6;
       char2Arr('H', d_PosX - poz, 0);
-    } 
+//    } 
 poz = poz+6;       
       char2Arr(' ', d_PosX - poz, 0);
 poz = poz+6;
@@ -1161,7 +1090,7 @@ poz = poz+6;
 //poz = poz+6;
 mult = poz + 5;
      
-// end Seby part
+// end Seby & my part
 
             refresh_display(); //alle 50ms
             if (f_scrollend_y == true) {
