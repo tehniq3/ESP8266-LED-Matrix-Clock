@@ -33,8 +33,8 @@
 #define CS         15     // Pin cs  (SPI)
 #define anzMAX     6      // Anzahl der kaskadierten Module
 
-char ssid[] = "bbk2";                    // your network SSID (name)
-char pass[] = "internet2";                    // your network password
+char ssid[] = "network name";                    // your network SSID (name)
+char pass[] = "password";                    // your network password
 
 // other displays -------------------------------------
 #define REVERSE_HORIZONTAL                        // Parola, Generic and IC-Station
