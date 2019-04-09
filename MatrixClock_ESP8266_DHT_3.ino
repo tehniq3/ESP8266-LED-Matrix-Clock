@@ -934,10 +934,10 @@ if (MEZ.sek12 == 10)
     {
     if (WiFi.status() != WL_CONNECTED) {
       //  delay(500);
-        Serial.println("-");
+        Serial.println("WiFi is NOT connected !");
     }
     else 
-    Serial.println("WiFi is (re)connected");
+    Serial.println("WiFi is (re)connected !");
     }      
              if (MEZ.sek12 == 59)    
              {
