@@ -34,7 +34,7 @@
 #define CS         15     // Pin cs  (SPI)
 #define anzMAX     6      // Anzahl der kaskadierten Module
 
-char ssid[] = "wifinetwork";                    // your network SSID (name)
+char ssid[] = "yourtwifinetkork";                    // your network SSID (name)
 char pass[] = "password";                    // your network password
 
 // other displays -------------------------------------
@@ -267,11 +267,17 @@ void connect_to_WiFi() {  // We start by connecting to a WiFi network
         Serial.print(".");
     }
 */   
-    if (WiFi.status() != WL_CONNECTED) {
+for (byte  i = 0; i <= 50; i++) 
+   {
+   if (WiFi.status() != WL_CONNECTED) 
+    {
         delay(500);
         Serial.print(".");
-    }
-    else 
+    }  
+    else
+    i = 50;
+}
+    if (WiFi.status() == WL_CONNECTED) 
     {
     Serial.println("WiFi connected");
     Serial.print("IP address: ");
@@ -904,17 +910,7 @@ void loop() {
             std22 = std2;
             f_tckr1s = false;
             if (MEZ.sek12 == 35)
-                f_scroll_x = true;
-/*
-if (MEZ.sek12 == 5)    // change at everi minute brightness
-             {
-              Serial.println("change brightness !");
-              if (min12%2 == 0) 
-              max7219_set_brightness(0);
-              else
-              max7219_set_brightness(4);
-             } 
- */    
+                f_scroll_x = true; 
  
 if ((MEZ.std12 < 7) or (MEZ.std12 >19))  // change brighness for day or night
 {
