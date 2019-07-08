@@ -8,6 +8,8 @@ my articles:
 
 ![ceas](https://4.bp.blogspot.com/-sPenR_UCMYA/XKEeiTulrlI/AAAAAAAAY7A/pjJxiMm3iCo-j3SLFzuTvmfkJRRP7LP2wCLcBGAs/s1600/ceas0.jpg)
 
+classical clock:
 ![schematic](https://3.bp.blogspot.com/--UePMiKRmFs/XKEjsCvku6I/AAAAAAAAY70/pDLfakXD7fcyVTAXzI74wH5Jl8OpZm4DgCLcBGAs/s1600/ESP8266_LED_Matrix_Clock_DHT.gif)
 
-![schemtic2](https://4.bp.blogspot.com/-OyIs9oE8in8/XK9-Zm2RxzI/AAAAAAAAZCg/a2TihedTq501hoK6mNFIUM-Fo1CypZZcgCLcBGAs/s1600/ESP8266_LED_Matrix_Clock_DHT_LDR.gif)
+schematic with automatic brightness (using LDR = photoresistor):
+![schematic2](https://4.bp.blogspot.com/-OyIs9oE8in8/XK9-Zm2RxzI/AAAAAAAAZCg/a2TihedTq501hoK6mNFIUM-Fo1CypZZcgCLcBGAs/s1600/ESP8266_LED_Matrix_Clock_DHT_LDR.gif)
