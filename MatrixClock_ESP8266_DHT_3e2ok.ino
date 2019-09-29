@@ -286,7 +286,7 @@ void connect_to_WiFi() {  // We start by connecting to a WiFi network
         Serial.print(".");
     }
 */   
-for (byte  i = 0; i <= 50; i++) 
+for (byte  i = 0; i < 5; i++) 
    {
    if (WiFi.status() != WL_CONNECTED) 
     {
@@ -294,7 +294,7 @@ for (byte  i = 0; i <= 50; i++)
         Serial.print(".");
     }  
     else
-    i = 50;
+    i = 5;
 }
     if (WiFi.status() == WL_CONNECTED) 
     {
