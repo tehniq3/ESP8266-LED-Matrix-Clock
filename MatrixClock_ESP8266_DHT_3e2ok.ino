@@ -24,7 +24,7 @@
 // ver.31 - verify quick the light level
 // ver.3.2 - add full name of the days and the months
 // ver.3.2.ok - split info, in one minute is displayed data, other minute temperature and humidity
-// ver.3.2.ok1 - if need it, clock try to reconnect at wifi just at 0:0:10
+// ver.3.2.ok1 - if need it, clock try to reconnect at wifi just at 0:0:10, alse deactivate led from D0/gpio16
 
 #include <SPI.h>
 #include <Ticker.h>
@@ -40,7 +40,7 @@
 #define CS         15     // Pin cs  (SPI)
 #define anzMAX     6      // Anzahl der kaskadierten Module
 
-char ssid[] = "wifi_name";                    // your network SSID (name)
+char ssid[] = "bbk2";                    // your network SSID (name)
 char pass[] = "internet2";                    // your network password
 
 // other displays -------------------------------------
@@ -113,7 +113,7 @@ int mult = 0;
 
 int lumina, lumina0; // level for light
 
-#define led 16  // GPIO 16 = D0 
+//#define led 16  // GPIO 16 = D0 
 #define stins HIGH
 #define aprins LOW
 
@@ -287,16 +287,18 @@ void connect_to_WiFi() {  // We start by connecting to a WiFi network
         Serial.print(".");
     }
 */   
+
 for (byte  i = 0; i < 50; i++) 
    {
    if (WiFi.status() != WL_CONNECTED) 
     {
-        delay(5);
+        delay(50);
         Serial.print(".");
     }  
     else
     i = 50;
 }
+
     if (WiFi.status() == WL_CONNECTED) 
     {
     Serial.println("WiFi connected");
@@ -346,7 +348,7 @@ tm* connectNTP() { //if response from NTP was succesfull return *tm else return 
     // subtract seventy years:
     epoch = secsSince1900 - seventyYears +2; //+2000ms Verarbeitungszeit
     epoch=epoch+3600*corectie; // difference -6h = -6* 3600 sec)
-    digitalWrite(led, stins);  // led off
+//    digitalWrite(led, stins);  // led off
     time_t t;
     t = epoch;
     tm* tt;
@@ -449,7 +451,7 @@ void rtc_set(tm* tt) {
     rtc_jahr((unsigned char) tt->tm_year - 100);
     rtc_wochentag((unsigned char) tt->tm_wday);
     Serial.println("adjust the clock !");
-    digitalWrite(led, stins);  // led off -> ok
+//    digitalWrite(led, stins);  // led off -> ok
 }
 //**************************************************************************************************
 float rtc_temp() {
@@ -802,7 +804,7 @@ void timer50ms() {
     }
 */    
     if (cnt1h == 1) { //     // verify time (1 = every hour, 24 - every day)
-        digitalWrite(led, aprins);  // led is on (stay on until NTP server is read)
+ //       digitalWrite(led, aprins);  // led is on (stay on until NTP server is read)
         f_tckr24h = true;
         cnt1h = 0;
     }
@@ -812,8 +814,8 @@ void timer50ms() {
 //The setup function is called once at startup of the sketch
 void setup() {
     // Add your initialization code here
-pinMode(led, OUTPUT);
-digitalWrite(led, aprins); // led is on
+//pinMode(led, OUTPUT);
+//digitalWrite(led, aprins); // led is on
     pinMode(CS, OUTPUT);
     digitalWrite(CS, HIGH);
     Serial.begin(115200);
@@ -969,7 +971,7 @@ if (MEZ.sek12 % 2 == 0)
       }
     }
 byte orazero = MEZ.min12 + MEZ.std12;  
-if (( orazero == 0) and (MEZ.sek12 == 10))   // just at 0:0:10
+if (( orazero == 0) and (MEZ.sek12 == 10))   // just at 0:0:10   
     {      
     if (WiFi.status() != WL_CONNECTED) {
       //  delay(500);
@@ -1002,7 +1004,7 @@ tempz = temp/100;
 tempr = temp - 100*tempz;
 tempu = tempr/10;
 temps = tempr%10;
-     } 
+     }
      else
      {
               umiditate = dht.readHumidity();
@@ -1181,7 +1183,9 @@ poz = poz+6;
       char2Arr(48 + (umiditate%10), d_PosX - poz, 0);
 poz = poz+6;
       char2Arr('%', d_PosX - poz, 0);
-poz = poz+6;      
+poz = poz+6; 
+      char2Arr(' ', d_PosX - poz, 0);
+poz = poz+6;     
       char2Arr('R', d_PosX - poz, 0);
 poz = poz+6;
       char2Arr('H', d_PosX - poz, 0);     
