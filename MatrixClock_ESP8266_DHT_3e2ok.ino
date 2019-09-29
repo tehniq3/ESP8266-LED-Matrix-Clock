@@ -23,7 +23,8 @@
 // ver.3e - change brightness using photoresistor (at NodeMCU: +3V3----LDR----A0(ADC)----|==10k==|------GND )
 // ver.31 - verify quick the light level
 // ver.3.2 - add full name of the days and the months
-// ver.3.2.ok - spliy info, in one minute is displayed data, other minute temperature and humidity
+// ver.3.2.ok - split info, in one minute is displayed data, other minute temperature and humidity
+// ver.3.2.ok1 - decrease time for reconnect at wifi
 
 #include <SPI.h>
 #include <Ticker.h>
@@ -286,7 +287,7 @@ void connect_to_WiFi() {  // We start by connecting to a WiFi network
         Serial.print(".");
     }
 */   
-for (byte  i = 0; i < 5; i++) 
+for (byte  i = 0; i < 50; i++) 
    {
    if (WiFi.status() != WL_CONNECTED) 
     {
@@ -294,7 +295,7 @@ for (byte  i = 0; i < 5; i++)
         Serial.print(".");
     }  
     else
-    i = 5;
+    i = 50;
 }
     if (WiFi.status() == WL_CONNECTED) 
     {
@@ -972,7 +973,9 @@ if (MEZ.sek12 == 10)
     if (WiFi.status() != WL_CONNECTED) {
       //  delay(500);
         Serial.println("WiFi is NOT connected !");
-        connect_to_WiFi();
+    //    connect_to_WiFi();
+    WiFi.mode(WIFI_STA);
+    WiFi.begin(ssid, pass);
     }
     else 
     Serial.println("WiFi is (re)connected");
