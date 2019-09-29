@@ -39,7 +39,7 @@
 #define CS         15     // Pin cs  (SPI)
 #define anzMAX     6      // Anzahl der kaskadierten Module
 
-char ssid[] = "bbk2";                    // your network SSID (name)
+char ssid[] = "wifi_name";                    // your network SSID (name)
 char pass[] = "internet2";                    // your network password
 
 // other displays -------------------------------------
@@ -290,7 +290,7 @@ for (byte  i = 0; i <= 50; i++)
    {
    if (WiFi.status() != WL_CONNECTED) 
     {
-        delay(500);
+        delay(5);
         Serial.print(".");
     }  
     else
