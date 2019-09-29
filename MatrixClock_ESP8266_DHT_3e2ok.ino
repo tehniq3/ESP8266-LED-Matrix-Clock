@@ -24,7 +24,7 @@
 // ver.31 - verify quick the light level
 // ver.3.2 - add full name of the days and the months
 // ver.3.2.ok - split info, in one minute is displayed data, other minute temperature and humidity
-// ver.3.2.ok1 - decrease time for reconnect at wifi
+// ver.3.2.ok1 - if need it, clock try to reconnect at wifi just at 0:0:10
 
 #include <SPI.h>
 #include <Ticker.h>
@@ -968,14 +968,13 @@ if (MEZ.sek12 % 2 == 0)
        Serial.println ("change brightness...");
       }
     }
-if (MEZ.sek12 == 10)    
+byte orazero = MEZ.min12 + MEZ.std12;  
+if (( orazero == 0) and (MEZ.sek12 == 10))   // just at 0:0:10
     {      
     if (WiFi.status() != WL_CONNECTED) {
       //  delay(500);
         Serial.println("WiFi is NOT connected !");
-    //    connect_to_WiFi();
-    WiFi.mode(WIFI_STA);
-    WiFi.begin(ssid, pass);
+        connect_to_WiFi();
     }
     else 
     Serial.println("WiFi is (re)connected");
@@ -1003,7 +1002,7 @@ tempz = temp/100;
 tempr = temp - 100*tempz;
 tempu = tempr/10;
 temps = tempr%10;
-     }
+     } 
      else
      {
               umiditate = dht.readHumidity();
