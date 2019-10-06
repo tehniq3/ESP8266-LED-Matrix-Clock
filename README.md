@@ -8,6 +8,8 @@ my articles:
 
 ![ceas](https://4.bp.blogspot.com/-sPenR_UCMYA/XKEeiTulrlI/AAAAAAAAY7A/pjJxiMm3iCo-j3SLFzuTvmfkJRRP7LP2wCLcBGAs/s1600/ceas0.jpg)
 
+NOTE: LAST STABLE VERSION IS /MatrixClock_ESP8266_DHT_3e1.ino !
+
 classical clock:
 ![schematic](https://3.bp.blogspot.com/--UePMiKRmFs/XKEjsCvku6I/AAAAAAAAY70/pDLfakXD7fcyVTAXzI74wH5Jl8OpZm4DgCLcBGAs/s1600/ESP8266_LED_Matrix_Clock_DHT.gif)
 
