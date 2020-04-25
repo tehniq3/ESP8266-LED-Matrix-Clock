@@ -1,4 +1,7 @@
-# NOTE: You must change line Serial.println(String(WiFi.localIP()); in Serial.println(WiFi.localIP()); !!!!
+# NOTE: You must change line
+# Serial.println(String(WiFi.localIP()); 
+in
+# Serial.println(WiFi.localIP()); !!!!
 
 # ESP8266-LED-Matrix-Clock
 inspired by https://github.com/schreibfaul1/ESP8266-LED-Matrix-Clock
