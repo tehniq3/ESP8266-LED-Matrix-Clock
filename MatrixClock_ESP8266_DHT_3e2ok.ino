@@ -1098,10 +1098,13 @@ poz = 11;
 if (MEZ.min12 %2 == 1) 
 {
 // data
-   for (int ji = 0; ji < zi2[MEZ.WT-1]; ji++) 
+int zi3 = MEZ.WT-1;   // added in 05.May.2020
+if (zi3 < 0) zi3 = 6;   
+   
+   for (int ji = 0; ji < zi2[zi3]; ji++) 
    {
    char2Arr(' ', d_PosX - poz, 0);  
-   char2Arr(zi[MEZ.WT-1][ji], d_PosX - poz, 0);        //day of the week
+   char2Arr(zi[zi3][ji], d_PosX - poz, 0);        //day of the week
    poz = poz+6;
    }
             char2Arr(' ', d_PosX - poz, 0);     
