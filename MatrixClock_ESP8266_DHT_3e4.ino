@@ -29,7 +29,7 @@
 // ver.3.2.ok2 - corrected bug for Sunday/Duminica to not be bank screen for name of  day and date
 // ver.3.3.3 - bold fonts (used from Bogdan ARGATU)
 // ver.3.3.4 - migrated to DHTesp library instead classical DHT
-// ver.3.4 - added Thingspeak sendert fot temperature and humidity
+// ver.3.4 - added Thingspeak sender for temperature and humidity
 
 
 #include <SPI.h>
