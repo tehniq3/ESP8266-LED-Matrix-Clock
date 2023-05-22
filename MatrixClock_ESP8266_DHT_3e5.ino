@@ -30,7 +30,7 @@
 // ver.3.3.3 - bold fonts (used from Bogdan ARGATU)
 // ver.3.3.4 - migrated to DHTesp library instead classical DHT
 // ver.3.4 - added Thingspeak sender for temperature and humidity
-// ver.3.5 - changed for BMP180 sensor (instead DHT sensor)
+// ver.3.5 - changed for BMP180 sensor (instead DHT sensor) + sweep the i2c pins for default configuration
 
 
 #include <SPI.h>
@@ -44,10 +44,10 @@
 //#include "DHTesp.h" - https://www.arduinolibraries.info/libraries/dht-sensor-library-for-es-px
 #include <Adafruit_BMP085.h> // https://github.com/adafruit/Adafruit-BMP085-Library
 
-#define SDA        5      // Pin sda (I2C)
-#define SCL        4      // Pin scl (I2C)
-#define CS         15     // Pin cs  (SPI)
-#define anzMAX     6      // Anzahl der kaskadierten Module
+#define SDA        4      // GIPO4 = D2, pin SDA (I2C)
+#define SCL        5      // GIPO5 = D1, pin SCL (I2C)
+#define CS        15      // GPIO15 = D8, pin CS (SPI)
+#define anzMAX     6      // number of matrix module (Anzahl der kaskadierten Module)
 
 char ssid[] = "bere";                    // your network SSID (name)
 char pass[] = "bererece";                    // your network password
