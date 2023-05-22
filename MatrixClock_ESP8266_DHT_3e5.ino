@@ -30,7 +30,7 @@
 // ver.3.3.3 - bold fonts (used from Bogdan ARGATU)
 // ver.3.3.4 - migrated to DHTesp library instead classical DHT
 // ver.3.4 - added Thingspeak sender for temperature and humidity
-// ver.3.5 - changed for BMP180 sensor (instead DHT sensor) + sweep the i2c pins for default configuration
+// ver.3.5 - changed for BMP180 sensor (instead DHT sensor) + swap the i2c pins for default configuration
 
 
 #include <SPI.h>
