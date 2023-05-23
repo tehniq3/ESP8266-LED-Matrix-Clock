@@ -31,7 +31,7 @@
 // ver.3.3.4 - migrated to DHTesp library instead classical DHT
 // ver.3.4 - added Thingspeak sender for temperature and humidity
 // ver.3.5 - changed for BMP180 sensor (instead DHT sensor)
-// ver.3.5.1 - changed for BMP180 sensor modified by Both Leo
+// ver.3.5.1 - changed for BMP180 sensor, modified by Both Leo
 
 
 #include <SPI.h>
