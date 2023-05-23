@@ -8,6 +8,13 @@ my articles:
 
 - https://nicuflorica.blogspot.com/2019/04/ceas-matriceal-animat-cu-esp8266-si-rtc.html
 
+- https://nicuflorica.blogspot.com/2019/04/ceas-matriceal-animat-cu-esp8266-si-rtc_11.html
+
+- http://nicuflorica.blogspot.com/2019/05/ceas-matriceal-animat-cu-esp8266-si-rtc.html
+
+- http://nicuflorica.blogspot.com/2019/09/ceas-matriceal-animat-cu-esp8266-si-rtc.html
+
+
 ![ceas](https://4.bp.blogspot.com/-sPenR_UCMYA/XKEeiTulrlI/AAAAAAAAY7A/pjJxiMm3iCo-j3SLFzuTvmfkJRRP7LP2wCLcBGAs/s1600/ceas0.jpg)
 
 NOTE: LAST STABLE VERSION IS /MatrixClock_ESP8266_DHT_3e1.ino !
